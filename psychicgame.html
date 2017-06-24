@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Psychic Game!</title>
+</head>
+<body>
+ <h1>The Psychic Game!</h1>
+   <div id="game">
+     <p>Press any letter to try and guess what letter I am thinking of</p>
+   </div>
+
+    <!-- I need to have computer pick letter
+         make a win/loss 
+         make var of number guesses/ make them go down when user guesses wrong.
+         must display letters guessed
+
+         -->
+
+   <script type="text/javascript">
+        //Variables to track wins/losses/guesses
+       var options = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+       var wins = 0;
+       var losses = 0;
+       var guessesleft = 9;
+       var guessSoFar = 0;  	
+
+           //Variable for computer to pick random letter
+       var computerguess = options[Math.floor(Math.random()*options.length)];
+                console.log(computerguess);
+
+          //When user clicks a letter
+       document.onkeyup = function(event) {
+          var userguess = String.fromCharCode(event.keyCode).toLowerCase();
+
+            console.log(userguess);
+
+             if (userguess == computerguess) {
+             	wins++;
+              
+              }
+              if (userguess !== computerguess) {
+              	guessesleft--;
+                guessSoFar++;
+              }
+              if (guessesleft == 0) {
+             	losses++;
+              }
+
+
+             if (guessSoFar) {
+              guessSoFar++;
+             }
+           
+            
+      // join(" ")
+     
+
+             var html = "<p>Press any letter to try and guess what letter I am thinking of</p>" + 
+                        "<p>wins: " + wins + "</p>" +
+                        "<p> losses: " + losses + "</p>" +
+                        "<p> guessesleft: " + guessesleft + "</p>" +
+                        "<p> guessSoFar: " + guessSoFar + "</p>";
+                  
+             //should make text show up on page
+             document.querySelector("#game").innerHTML = html;
+       }
+ //I was not able to get my game to reset, everytime I would add something it make my game not run at all.
+    
+   </script>
+
+</body>
+</html>
